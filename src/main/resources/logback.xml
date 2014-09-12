@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="logFile" class="ch.qos.logback.core.FileAppender"  >
+        <file>${user.home}/twitter-collector.log</file>
+        <encoder>
+            <pattern>%date{yyyy/MM/dd HH:mm:ss.SSS,Europe/Paris} %5level [%thread] %logger{16} - %X{orderNumber} - %message%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="fr.xebia" level="DEBUG" />
+
+    <root level="WARN">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="logFile" />
+    </root>
+</configuration>
